@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-nim
+  namespace: nim-test
+  labels:
+    app: nginx-nim
+spec:
+  selector:
+    matchLabels:
+      app: nginx-nim
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx-nim
+    spec:
+      containers:
+      - name: nginx-nim
+        image: your.registry.tld/nginx-with-nim2-agent:tag
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80
+        volumeMounts:
+        - name: nginx-default-conf
+          mountPath: /etc/nginx/conf.d/default.conf
+          subPath: default.conf
+      volumes:
+      - name: nginx-default-conf
+        configMap:
+          name: nginx-default-conf
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-nim
+  namespace: nim-test
+  labels:
+    app: nginx-nim
+spec:
+  ports:
+  - name: http
+    port: 80
+  - name: api
+    port: 8080
+  selector:
+    app: nginx
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-nim
+  namespace: nim-test
+  annotations:
+    nginx.org/proxy-connect-timeout: "30s"
+    nginx.org/proxy-read-timeout: "20s"
+    nginx.org/client-max-body-size: "4m"
+    nginx.com/health-checks: "true"
+  labels:
+    app: nginx-nim
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: nim-test-nim.f5.ff.lan
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 80
