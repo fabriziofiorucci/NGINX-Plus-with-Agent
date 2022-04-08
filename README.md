@@ -17,8 +17,7 @@ To run NGINX Instance Manager on Kubernetes see https://github.com/fabriziofioru
 1. Clone this repository
 2. Copy NGINX Plus license files `nginx-repo.crt` and `nginx-repo.key` into `container/`
 3. Get NGINX Instance Manager 2.x agent .deb package for `linux_amd64` (ie. `nginx-agent_2.14.0_linux_amd64.deb`) and copy it into `nim-files/`. The agent's .deb package can be found on NGINX Instance Manager instance under `/var/www/nms/packages-repository/deb/debian/pool/agent/n/nginx-agent/` as of release 2.1.0
-4. Optionally edit `container/nginx-agent.conf` and set `host:` and `grpcPort:` to point to your NGINX Instance Manager instance. Default values `host: nginx-nim2.nginx-nim2` and `grpcPort: 443` work with https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
-5. Build the Docker image using:
+4. Build the Docker image using:
 
 ```
 $ ./scripts/build.sh [nginx-agent debfile] [image name]
@@ -30,16 +29,16 @@ $ ./scripts/build.sh container/nginx-agent_2.14.0_linux_amd64.deb registry.ff.la
 
 the build script pushes the image to your private registry
 
-6. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set environment variables `NIM_HOST` and `NIM_GRPC_PORT` to NGINX Instance Manager hostname/IP address and gRPC port. Default values can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
+5. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set environment variables `NIM_HOST` and `NIM_GRPC_PORT` to NGINX Instance Manager hostname/IP address and gRPC port. Default values can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
 
-7. Start and stop using
+6. Start and stop using
 
 ```
 $ ./scripts/nginxWithAgentStart.sh start
 $ ./scripts/nginxWithAgentStart.sh stop
 ```
 
-8. After startup NGINX Plus instances will register to NGINX Instance Manager and will be displayed on the "instances" dashboard
+7. After startup NGINX Plus instances will register to NGINX Instance Manager and will be displayed on the "instances" dashboard
 
 
 ## Tested NGINX Instance Manager releases
