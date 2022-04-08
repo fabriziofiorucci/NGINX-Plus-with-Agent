@@ -16,7 +16,6 @@ COPY $NGINX_AGENT_DEB /deployment/nginx-agent.deb
 RUN dpkg -i /deployment/nginx-agent.deb
 RUN rm /deployment/nginx-agent.deb
 COPY ./container/start.sh /deployment/
-COPY ./container/nginx-agent.conf /etc/nginx-agent/
 RUN chmod +x /deployment/start.sh && touch /.dockerenv
 
 # Download certificate and key from the customer portal (https://account.f5.com)
