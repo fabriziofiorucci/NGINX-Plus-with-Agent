@@ -1,4 +1,0 @@
-1. Download nginx-repo.crt and nginx-repo.key and copy to container/
-2. Get nginx agent's .deb file and copy it to container/
-3. Edit container/nginx-agent.conf and set "host" to NGINX Instance Manager hostname
-4. build the docker image running ./scripts/build.sh - agentfile, registry, imagename and release tag can be changed editing build.sh. The image is automatically pushed to the private registry
