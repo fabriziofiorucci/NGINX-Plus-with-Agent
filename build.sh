@@ -22,8 +22,9 @@ echo "Creating image     : $IMAGENAME"
 if [[ "$AGENTFILE" == *rpm ]]
 then
 	FILE=./Dockerfile.centos
-else
-	FILE=./Dockerfile
+elif [[ "$AGENTFILE" == *deb ]]
+then
+	FILE=./Dockerfile.debian
 fi
 
 DOCKER_BUILDKIT=1 docker build --no-cache -f $FILE --build-arg NGINX_AGENT_PKG=$AGENTFILE -t $IMAGENAME .

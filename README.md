@@ -16,11 +16,11 @@ To run NGINX Instance Manager on Kubernetes see https://github.com/fabriziofioru
 
 1. Clone this repository
 2. Copy NGINX Plus license files `nginx-repo.crt` and `nginx-repo.key` into `container/`
-3. Get NGINX Instance Manager 2.x agent .deb package for `linux_amd64` (ie. `nginx-agent_2.14.0_linux_amd64.deb`) and copy it into `nim-files/`. The agent's .deb package can be found on NGINX Instance Manager instance under `/var/www/nms/packages-repository/deb/debian/pool/agent/n/nginx-agent/` as of release 2.1.0
+3. Get NGINX Instance Manager 2.x agent .deb or .rpm package for `linux_amd64` (ie. `nginx-agent_2.14.0_linux_amd64.deb`) and copy it into `nim-files/`. The agent's package can be found on NGINX Instance Manager instance under `/var/www/nms/packages-repository/deb/debian/pool/agent/n/nginx-agent/` (.deb package) or `/var/www/nms/packages-repository/rpm/redhatenterprise/8/x86_64/RPMS/` (.rpm package) as of NGINX Instance Manager release 2.1.0. If a .deb package is used the docker image will be built based on Debian, if .rpm is used the image will be based on centos
 4. Build the Docker image using:
 
 ```
-$ ./scripts/build.sh [nginx-agent debfile] [image name]
+$ ./scripts/build.sh [nginx-agent package file .deb or .rpm] [image name]
 
 for instance:
 

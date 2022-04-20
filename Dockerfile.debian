@@ -1,5 +1,5 @@
 FROM debian:buster-slim
-ARG NGINX_AGENT_DEB
+ARG NGINX_AGENT_PKG
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 
@@ -12,7 +12,7 @@ ENV PKG_RELEASE     1~buster
 
 # NGINX Instance Manager agent setup
 RUN mkdir /deployment
-COPY $NGINX_AGENT_DEB /deployment/nginx-agent.deb
+COPY $NGINX_AGENT_PKG /deployment/nginx-agent.deb
 RUN dpkg -i /deployment/nginx-agent.deb
 RUN rm /deployment/nginx-agent.deb
 COPY ./container/start.sh /deployment/
