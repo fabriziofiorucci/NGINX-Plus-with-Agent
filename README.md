@@ -20,8 +20,8 @@ To run NGINX Instance Manager on Kubernetes see https://github.com/fabriziofioru
    - The agent's package can be found on NGINX Instance Manager 
 instance under `/var/www/nms/packages-repository/deb/debian/pool/agent/n/nginx-agent/` (.deb package) or `/var/www/nms/packages-repository/rpm/redhatenterprise/8/x86_64/RPMS/` (.rpm package) as of NGINX Instance 
 Manager release 2.1.0.
-   - If a `.deb` package is used the docker image will be built based on Debian
-   - If `.rpm` is used the image will be based on centos
+   - If `.deb` is used the image will be based on Debian
+   - If `.rpm` is used the image will be based on CentOS
 4. Build the Docker image using:
 
 ```
