@@ -3,7 +3,6 @@
 ## Description
 
 This repository can be used to build a docker image with NGINX Plus and NGINX Instance Manager 2 Agent (https://docs.nginx.com/nginx-instance-manager/).
-To run NGINX Instance Manager on Kubernetes see https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
 
 ## Prerequisites
 
