@@ -33,7 +33,11 @@ $ ./scripts/build.sh container/nginx-agent_2.14.0_linux_amd64.deb registry.ff.la
 
 the build script pushes the image to your private registry
 
-5. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set environment variables `NIM_HOST` and `NIM_GRPC_PORT` to NGINX Instance Manager hostname/IP address and gRPC port. Default values can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
+5. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set the following environment variables. Default values for `NIM_HOST` and `NIM_GRPC_PORT` can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
+  - `NIM_HOST` - NGINX Instance Manager hostname/IP address
+  - `NIM_GRPC_PORT` - NGINX Instance Manager gRPC port.
+  - `NIM_INSTANCEGROUP` - instance group for the NGINX Kubernetes Deployment
+  - `NIM_TAGS` - comma separated list of tags for the NGINX Kubernetes Deployment
 
 6. Start and stop using
 

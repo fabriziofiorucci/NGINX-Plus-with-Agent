@@ -32,6 +32,10 @@ spec:
             value: "nginx-nim2.nginx-nim2"
           - name: NIM_GRPC_PORT
             value: "443"
+          - name: NIM_INSTANCEGROUP
+            value: "lab"
+          - name: NIM_TAGS
+            value: "preprod,devops"
       volumes:
       - name: nginx-default-conf
         configMap:
