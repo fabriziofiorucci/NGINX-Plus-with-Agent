@@ -8,17 +8,17 @@ This repository can be used to build a docker image with NGINX Plus and NGINX In
 
 - Linux host running Docker to build the image
 - NGINX Plus license
-- One running instance of NGINX Instance Manager 2.1.0 (https://docs.nginx.com/nginx-instance-manager/)
+- One running instance of NGINX Instance Manager 2.1.0+ (https://docs.nginx.com/nginx-instance-manager/)
 - Openshift/Kubernetes cluster
 
 ## How to build
 
 1. Clone this repository
 2. Copy NGINX Plus license files `nginx-repo.crt` and `nginx-repo.key` into `container/`
-3. Get NGINX Instance Manager 2.x agent .deb or .rpm package for `linux_amd64` (ie. `nginx-agent_2.14.0_linux_amd64.deb`) and copy it into `nim-files/`.
+3. Get NGINX Instance Manager 2.x agent .deb or .rpm package for `linux_amd64` (ie. `nginx-agent_2.14.0_linux_amd64.deb`) and copy it into `container/`.
    - The agent's package can be found on NGINX Instance Manager 
 instance under `/var/www/nms/packages-repository/deb/debian/pool/agent/n/nginx-agent/` (.deb package) or `/var/www/nms/packages-repository/rpm/redhatenterprise/8/x86_64/RPMS/` (.rpm package) as of NGINX Instance 
-Manager release 2.1.0.
+Manager release 2.1.0+
    - If `.deb` is used the image will be based on Debian
    - If `.rpm` is used the image will be based on CentOS
 4. Build the Docker image using:
@@ -51,4 +51,4 @@ $ ./scripts/nginxWithAgentStart.sh stop
 
 ## Tested NGINX Instance Manager releases
 
-This repository has been tested with NGINX Instance Manager 2.1.0+
+This repository has been tested with NGINX Instance Manager 2.1.0 to 2.4.0
