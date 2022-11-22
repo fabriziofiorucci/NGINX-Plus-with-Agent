@@ -51,4 +51,4 @@ $ ./scripts/nginxWithAgentStart.sh stop
 
 ## Tested NGINX Instance Manager releases
 
-This repository has been tested with NGINX Instance Manager 2.1.0 to 2.4.0
+This repository has been tested with NGINX Instance Manager 2.1.0 to 2.6.0
