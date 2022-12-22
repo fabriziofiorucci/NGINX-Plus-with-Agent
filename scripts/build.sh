@@ -65,8 +65,10 @@ fi
 
 echo "=> Target docker image is $IMAGENAME"
 
-DOCKER_BUILDKIT=1 docker build --no-cache -f Dockerfile --build-arg NGINX_CERT=$NGINX_CERT \
-	--build-arg NGINX_KEY=$NGINX_KEY --build-arg NMS_URL=$NMSURL -t $IMAGENAME .
+DOCKER_BUILDKIT=1 docker build --no-cache -f Dockerfile \
+	--secret id=nginx-key,src=$NGINX_KEY --secret id=nginx-crt,src=$NGINX_CERT \
+	--build-arg NMS_URL=$NMSURL -t $IMAGENAME .
+
 
 echo "=> Build complete for $IMAGENAME"
 docker push $IMAGENAME
