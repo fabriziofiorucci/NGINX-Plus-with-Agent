@@ -1,6 +1,7 @@
 FROM centos:7
 
 ARG NMS_URL
+ARG DEVPORTAL=false
 
 # Initial packages setup
 RUN yum -y update \
@@ -28,10 +29,17 @@ RUN --mount=type=secret,id=nginx-crt,dst=/etc/ssl/nginx/nginx-repo.crt \
 	&& wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nginx-plus-7.4.repo \
 #	&& wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/app-protect-7.repo \
 #	&& yum install -y app-protect app-protect-attack-signatures
-	&& yum install -y nginx-plus nginx-plus-module-njs nginx-plus-module-prometheus
-
-# Forward request logs to Docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& yum install -y nginx-plus nginx-plus-module-njs nginx-plus-module-prometheus \
+	&& if [ "$DEVPORTAL" = "true" ] ; then \
+	wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nms.repo \
+	&& curl -o /tmp/nginx_signing.key https://nginx.org/keys/nginx_signing.key \
+	&& rpmkeys --import /tmp/nginx_signing.key \
+	&& yum -y update \
+	&& yum -y install nginx-devportal nginx-devportal-ui \
+	&& echo 'DB_TYPE="sqlite"' | tee -a /etc/nginx-devportal/devportal.conf \
+	&& echo 'DB_PATH="/var/lib/nginx-devportal"' | tee -a /etc/nginx-devportal/devportal.conf; fi \
+	# Forward request logs to Docker log collector
+	&& ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 80

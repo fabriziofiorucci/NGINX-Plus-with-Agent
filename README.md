@@ -38,10 +38,15 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
  -C [file.crt]          - Certificate to pull packages from the official NGINX repository
  -K [file.key]          - Key to pull packages from the official NGINX repository
  -n [URL]               - NGINX Instance Manager URL to fetch the agent
+ -d                     - Build support for NGINX API Gateway Developer Portal
 
  === Examples:
 
+ NGINX Plus and NGINX Agent image:
  ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0 -n https://nim.f5.ff.lan
+
+ NGINX Plus with Developer Portal support and NGINX Agent image:
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0-devportal -d -n https://nim.f5.ff.lan
 ```
 
 1. Clone this repository
@@ -53,7 +58,7 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
 $ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:automated -n https://ubuntu.ff.lan
 ```
 
-the build script will push the image to your private registry once build is complete
+the build script will push the image to your private registry once build is complete. The `-d` flag can be used to build a Docker image to run NGINX Plus in [Developer Portal](https://docs.nginx.com/nginx-management-suite/admin-guides/installation/on-prem/install-guide/#install-developer-portal) mode for [API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/acm/about/architecture/)
 
 ### Running the docker image
 
