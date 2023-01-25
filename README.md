@@ -9,12 +9,14 @@ This repository can be used to build a docker image with NGINX Plus and NGINX In
 This repository has been tested with NGINX agent for:
 
 - NGINX Instance Manager 2.4.0, 2.5.0, 2.5.1, 2.6.0, 2.7.0
+- API Connectivity Manager 1.4.0
 
 ## Prerequisites
 
 - Linux host running Docker to build the image
 - NGINX Plus license
 - A running [NGINX Instance Manager](https://docs.nginx.com/nginx-instance-manager/) instance
+- [API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/acm/about/architecture/) if building with support for Developer Portal
 - Openshift/Kubernetes cluster
 
 ## Building the docker image
