@@ -10,6 +10,7 @@ This repository has been tested with NGINX agent for:
 
 - NGINX Instance Manager 2.4.0, 2.5.0, 2.5.1, 2.6.0, 2.7.0, 2.8.0
 - API Connectivity Manager 1.4.0
+- NGINX App Protect WAF 4.100.1+
 
 ## Prerequisites
 
@@ -41,14 +42,18 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
  -K [file.key]          - Key to pull packages from the official NGINX repository
  -n [URL]               - NGINX Instance Manager URL to fetch the agent
  -d                     - Build support for NGINX API Gateway Developer Portal
+ -w                     - Add NGINX App Protect WAF
 
  === Examples:
 
  NGINX Plus and NGINX Agent image:
  ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0 -n https://nim.f5.ff.lan
 
- NGINX Plus with Developer Portal support and NGINX Agent image:
- ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0-devportal -d -n https://nim.f5.ff.lan
+ NGINX Plus, NGINX App Protect WAF and NGINX Agent image:
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0 -w -n https://nim.f5.ff.lan
+
+ NGINX Plus, Developer Portal support and NGINX Agent image:
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0-devportal -d -n https://nim.f5.ff.lan 
 ```
 
 1. Clone this repository
@@ -60,7 +65,10 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
 $ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:automated -n https://ubuntu.ff.lan
 ```
 
-the build script will push the image to your private registry once build is complete. The `-d` flag can be used to build a Docker image to run NGINX Plus in [Developer Portal](https://docs.nginx.com/nginx-management-suite/admin-guides/installation/on-prem/install-guide/#install-developer-portal) mode for [API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/acm/about/architecture/)
+the build script will push the image to your private registry once build is complete.
+
+- the `-d` flag can be used to build a Docker image to run NGINX Plus in [Developer Portal](https://docs.nginx.com/nginx-management-suite/admin-guides/installation/on-prem/install-guide/#install-developer-portal) mode for [API Connectivity Manager](https://docs.nginx.com/nginx-management-suite/acm/about/architecture/)
+- the `-w` flag can be used to include NGINX App Protect WAF support in the docker image
 
 ### Running the docker image
 
@@ -69,6 +77,8 @@ the build script will push the image to your private registry once build is comp
   - `NIM_GRPC_PORT` - NGINX Instance Manager gRPC port.
   - `NIM_INSTANCEGROUP` - instance group for the NGINX Kubernetes Deployment
   - `NIM_TAGS` - comma separated list of tags for the NGINX Kubernetes Deployment
+  - `NAP_WAF` - set to `"true"` to enable NGINX App Protect WAF (docker image built using `-w`)
+  - `NAP_WAF_PRECOMPILED_POLICIES` - set to `"true"` to enable NGINX App Protect WAF precompiled policies (docker image built using `-w`)
 
 2. Start and stop using
 
