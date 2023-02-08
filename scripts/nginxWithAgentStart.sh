@@ -7,7 +7,6 @@ case $1 in
 		kubectl create namespace $NAMESPACE
 
 		pushd manifests/
-		kubectl create configmap nginx-default-conf -n $NAMESPACE --from-file=default.conf
 		kubectl apply -n $NAMESPACE -f .
 		popd
 	;;
