@@ -1,4 +1,4 @@
-# NGINX Plus + NGINX Instance Manager 2.x Agent - Docker image
+# NGINX Plus and NGINX Agent - Docker image builder
 
 ## Description
 
