@@ -30,11 +30,12 @@ RUN --mount=type=secret,id=nginx-crt,dst=/etc/ssl/nginx/nginx-repo.crt \
 	&& wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nginx-plus-7.4.repo \
 	&& yum install -y nginx-plus nginx-plus-module-njs nginx-plus-module-prometheus \
 
+# Optional NGINX App Protect WAF
 	&& if [ "$NAP_WAF" = "true" ] ; then \
 	wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/app-protect-7.repo \
 	&& yum install -y app-protect app-protect-attack-signatures; fi \
 
-# API Connectivity Manager DevPortal
+# Optional API Connectivity Manager DevPortal
 	&& if [ "$DEVPORTAL" = "true" ] ; then \
 	wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nms.repo \
 	&& curl -o /tmp/nginx_signing.key https://nginx.org/keys/nginx_signing.key \
