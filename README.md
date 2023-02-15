@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository can be used to build a docker image with NGINX Plus and NGINX Instance Manager 2 Agent (https://docs.nginx.com/nginx-instance-manager/).
+This repository can be used to build a docker image with NGINX Plus and NGINX Instance Manager Agent (https://docs.nginx.com/nginx-instance-manager/).
 
 ## Tested releases
 
