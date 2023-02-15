@@ -47,13 +47,13 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
  === Examples:
 
  NGINX Plus and NGINX Agent image:
- ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0 -n https://nim.f5.ff.lan
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-agent:2.7.0 -n https://nim.f5.ff.lan
 
  NGINX Plus, NGINX App Protect WAF and NGINX Agent image:
- ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0 -w -n https://nim.f5.ff.lan
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-agent:2.7.0 -w -n https://nim.f5.ff.lan
 
  NGINX Plus, Developer Portal support and NGINX Agent image:
- ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:2.7.0-devportal -d -n https://nim.f5.ff.lan 
+ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-agent:2.7.0-devportal -d -n https://nim.f5.ff.lan 
 ```
 
 1. Clone this repository
@@ -62,7 +62,7 @@ NGINX Plus & NGINX Instance Manager agent Docker image builder
 4. Build the Docker image using:
 
 ```
-$ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-nim2-agent:automated -n https://ubuntu.ff.lan
+$ ./scripts/build.sh -C nginx-repo.crt -K nginx-repo.key -t registry.ff.lan:31005/nginx-with-agent:automated -n https://ubuntu.ff.lan
 ```
 
 the build script will push the image to your private registry once build is complete.
@@ -72,7 +72,7 @@ the build script will push the image to your private registry once build is comp
 
 ### Running the docker image
 
-1. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set the following environment variables. Default values for `NIM_HOST` and `NIM_GRPC_PORT` can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NIM2-Docker
+1. Edit `manifests/1.nginx-nim.yaml` and specify the correct image by modifying the `image:` line, and set the following environment variables. Default values for `NIM_HOST` and `NIM_GRPC_PORT` can be used if NGINX Instance Manager is deployed using https://github.com/fabriziofiorucci/NGINX-NMS-Docker or https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-nms-docker
   - `NIM_HOST` - NGINX Instance Manager hostname/IP address
   - `NIM_GRPC_PORT` - NGINX Instance Manager gRPC port.
   - `NIM_INSTANCEGROUP` - instance group for the NGINX Kubernetes Deployment
