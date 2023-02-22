@@ -32,11 +32,16 @@ spec:
             value: "lab"
           - name: NIM_TAGS
             value: "preprod,devops"
-            # Optional if NGINX App Protect WAF is available in the docker image - set to "true" to enable
-          - name: NAP_WAF
-            value: "true"
-          - name: NAP_WAF_PRECOMPILED_POLICIES
-            value: "true"
+
+          # Optional if NGINX App Protect WAF is available in the docker image - set to "true" to enable
+          #- name: NAP_WAF
+          #  value: "true"
+          #- name: NAP_WAF_PRECOMPILED_POLICIES
+          #  value: "true"
+
+          # Optional if API Connectivity Manager Developer Portal is available in the docker image - set to "true" to enable
+          #- name: ACM_DEVPORTAL
+          #  value: "true"
 
 ---
 apiVersion: v1
