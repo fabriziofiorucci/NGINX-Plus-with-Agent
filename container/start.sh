@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#nginx -g "daemon off;"
 nginx
 sleep 2
 
@@ -31,5 +30,8 @@ if [[ "$NAP_WAF_PRECOMPILED_POLICIES" == "true" ]]; then
    PARM="${PARM} --nginx-app-protect-precompiled-publication"
 fi
 
-nginx-agent $PARM
+if [[ "$ACM_DEVPORTAL" == "true" ]]; then
+   nginx-devportal server &
+fi
 
+nginx-agent $PARM
