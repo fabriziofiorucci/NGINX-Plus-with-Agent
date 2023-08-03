@@ -10,7 +10,9 @@ COPY ./container/start.sh /deployment/
 # Initial packages setup
 RUN	apt-get -y update \
 	&& apt-get -y install apt-transport-https lsb-release ca-certificates wget gnupg2 curl debian-archive-keyring \
-	&& mkdir -p /deployment /etc/ssl/nginx
+	&& mkdir -p /deployment /etc/ssl/nginx \
+	&& addgroup --system --gid 20983 nginx \
+	&& adduser --system --disabled-login --ingroup nginx --no-create-home --home /nonexistent --gecos "nginx user" --shell /bin/false --uid 20983 nginx
 
 # Use certificate and key from kubernetes secret
 RUN --mount=type=secret,id=nginx-crt,dst=/etc/ssl/nginx/nginx-repo.crt,mode=0644 \
