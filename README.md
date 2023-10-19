@@ -10,7 +10,7 @@ It is also available as part of [official NGINX Demos](https://github.com/nginxi
 
 This repository has been tested with NGINX agent for:
 
-- NGINX Instance Manager 2.4.0, 2.5.0, 2.5.1, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.10.0, 2.10.1, 2.11.0, 2.12.0, 2.13.0, 2.13.1
+- NGINX Instance Manager 2.4.0, 2.5.0, 2.5.1, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.10.0, 2.10.1, 2.11.0, 2.12.0, 2.13.0, 2.13.1, 2.14.0
 - API Connectivity Manager 1.4.0, 1.5.0, 1.6.0, 1.7.0, 1.8.0, 1.9.0
 - NGINX App Protect WAF 4.100.1+
 
