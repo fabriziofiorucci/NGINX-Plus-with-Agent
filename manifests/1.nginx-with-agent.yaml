@@ -28,6 +28,8 @@ spec:
             value: "nginx-nim2.nginx-nim2"
           - name: NIM_GRPC_PORT
             value: "443"
+          - name: NIM_TOKEN
+            value: "XYZ"
           - name: NIM_INSTANCEGROUP
             value: "lab"
           - name: NIM_TAGS
@@ -41,10 +43,6 @@ spec:
           #- name: NAP_WAF
           #  value: "true"
           #- name: NAP_WAF_PRECOMPILED_POLICIES
-          #  value: "true"
-
-          # Optional if API Connectivity Manager Developer Portal is available in the docker image - set to "true" to enable
-          #- name: ACM_DEVPORTAL
           #  value: "true"
 
 ---
