@@ -8,9 +8,10 @@ It is also available as part of [official NGINX Demos](https://github.com/nginxi
 
 ## Tested releases
 
-This repository has been tested with NGINX agent for:
+This repository has been tested with: NGINX agent for:
 
-- NGINX Instance Manager 2.4.0, 2.5.0, 2.5.1, 2.6.0, 2.7.0, 2.8.0, 2.9.0, 2.10.0, 2.10.1, 2.11.0, 2.12.0, 2.13.0, 2.13.1, 2.14.0, 2.14.1, 2.15.0
+- NGINX Agent 2.14+
+- NGINX Instance Manager 2.15+
 - NGINX App Protect WAF 4.100.1+
 - NGINX One Cloud Console
 
